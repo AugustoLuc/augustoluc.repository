@@ -1,9 +1,4 @@
-let compras=[];
-
-
-
-
-
+let compras = [];
 
 function obtenerEleccionSeguro() {
     var precioSeguro1 = 450;
@@ -47,21 +42,21 @@ function mostrarResumen(eleccion, precioBase, descuento, metodoPagoTexto, precio
     console.log("Resumen de la compra:");
     console.log("Seguro elegido: " + eleccion);
     console.log("Precio base: $" + precioBase);
-    let misCompras="Historial:\n";
+    let misCompras = "Historial:\n";
     compras.forEach(compra => {
-        misCompras+=`Metodo de pago: ${compra.metodoPago}, Descuento: ${compra.descuento}, Precio final: ${compra.precioFinal}\n`; 
+        misCompras += `Metodo de pago: ${compra.metodoPago}, Descuento: ${compra.descuento}, Precio final: ${compra.precioFinal}\n`;
     })
 
-    
+
     if (descuento > 0) {
         console.log("Descuento: $" + descuento.toFixed(2) + " (" + metodoPagoTexto + ")");
         if (metodoPagoTexto === "Efectivo" || metodoPagoTexto === "Crédito") {
-            alert("Precio final con descuento (" + metodoPagoTexto + "): $" + precioFinal.toFixed(2) +"\n"+ misCompras);
+            alert("Precio final con descuento (" + metodoPagoTexto + "): $" + precioFinal.toFixed(2) + "\n" + misCompras);
         }
     } else {
         console.log("Precio final: $" + precioFinal.toFixed(2));
         if (metodoPagoTexto === "Débito") {
-            alert("Precio final (" + metodoPagoTexto + "): $" + precioFinal.toFixed(2) +"\n"+ misCompras);
+            alert("Precio final (" + metodoPagoTexto + "): $" + precioFinal.toFixed(2) + "\n" + misCompras);
         }
     }
 }
@@ -71,7 +66,7 @@ function main() {
 
     if (eleccion !== null) {
         var precioSeguro;
-        
+
         if (eleccion === 1) {
             precioSeguro = 450;
         } else if (eleccion === 2) {
@@ -79,7 +74,7 @@ function main() {
         } else if (eleccion === 3) {
             precioSeguro = 1000;
         }
-        
+
         var metodoPago = obtenerMetodoPago();
 
         if (metodoPago !== null) {
@@ -87,7 +82,7 @@ function main() {
             var metodoPagoTexto = metodoPago === "1" ? "Efectivo" : (metodoPago === "2" ? "Crédito" : "Débito");
             var precioFinal = precioSeguro - descuento;
 
-            compras.push({metodoPago:metodoPagoTexto,descuento:descuento,precioFinal:precioFinal})
+            compras.push({ metodoPago: metodoPagoTexto, descuento: descuento, precioFinal: precioFinal })
 
             mostrarResumen(eleccion, precioSeguro, descuento, metodoPagoTexto, precioFinal);
 
